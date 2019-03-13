@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="container profile">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="row flex">
+        <img src="../../assets/img/Trollface.png" class="avatar" alt="">
+      </div>
+      <div class="row flex">
+        <button class="btn btn-primary">Добавить фото</button>
+      </div>
+    </div>
+    <div class="col-sm info">
+      <fieldset [disabled]="status">
+
+      <div class="row field">Имя: <input type="text" id="NameInput" class="form-control" placeholder={{profile.name}}></div>
+      <div class="row field">Фамилия: <input type="text" id="SurnameInput" class="form-control" placeholder={{profile.surname}}></div>
+      <div class="row field">Возраст: <input type="text" id="AgeInput" class="form-control" placeholder={{profile.age}}></div>
+      <div class="row field">Телефон: <input type="text" id="PhoneInput" class="form-control" placeholder={{profile.phoneNumber}}></div>
+      <div class="row field">email: <input type="text" id="EmailInput" class="form-control" placeholder={{profile.email}}></div>
+      </fieldset>
+      <div class="flex">
+        <button class="btn btn-primary" *ngIf="status" (click)="status = false;">Изменить</button>
+        <button class="btn btn-primary" *ngIf="!status" (click)="status = true;">Сохранить</button>
+      </div>
+    </div>
+    <div>{{profileForm | json}}</div>
+    <form [formGroup]="profileForm">
+      <label for="name">имя</label>
+      <input type="text" id="name" formControlName="name" />
+      <br/><br/>
+
+      <label for="email">email</label>
+      <input type="text" id="email" formControlName="email" />
+      <br/><br/>
+
+      <button type="submit">отправить</button>
+    </form>
+  </div>
+</div>
+
