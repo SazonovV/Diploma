@@ -1,3 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
+<div *ngFor="let practice of this.practices">
+  <span>{{practice.name}}</span>
+  <span>{{practice.date}}</span>
+  <span>{{practice.id}}</span>
+  <span>{{practice.status}}</span>
+</div>
+
 <router-outlet></router-outlet>
