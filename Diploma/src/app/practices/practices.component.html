@@ -1,0 +1,67 @@
+<div class="practice_table">
+  <div class="row mg_5vh ">
+    <div class="col day">
+      <button class="button_week">ПН</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">ВТ</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">СР</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">ЧТ</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">ПТ</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">СБ</button>
+    </div>
+    <div class="col day">
+      <button class="button_week">ВС</button>
+    </div>
+  </div>
+
+  <div class="flex info">
+    <div class="left_side mg_5vh exercises">
+      <table class="table">
+        <thead class="header_color">
+        <tr>
+          <th>Тренировки</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let practice of this.practices" (click)="exerciseFromTrain(practice)" class="practice">
+          <td>{{this.practice.name}}</td>
+          <!--Раскоментировать когда будет доделано в беке-->
+          <!--<td>{{this.practice.date | date}}</td>-->
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="right_side">
+      <div class="exercises mg_5vh">
+        <table *ngIf="true" class="table">
+          <thead class="header_color">
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">Упражнение</th>
+            <th scope="col">Подходы</th>
+            <th scope="col">Повторения</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let exercise of this.exercises; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{exercise.name}}</td>
+            <td>{{exercise.num_try}}</td>
+            <td>{{exercise.num_rep}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

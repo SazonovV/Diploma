@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Data} from '@angular/router';
-import {Practice} from './practice';
+import {Practice} from './Interface/practice';
 
 
 @Component({
@@ -11,16 +11,15 @@ import {Practice} from './practice';
 })
 
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   private practices: Practice[];
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   title = 'Фитнес помошник';
 
 
   ngOnInit() {
 
-    this.http.get('https://shielded-chamber-25933.herokuapp.com/practices/').subscribe((data: Practice[]) => this.practices = data);
   }
 }

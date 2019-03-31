@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {IProfile} from '../../assets/i-profile';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Profile } from '../Interface/profile';
 
 
-let profile: IProfile;
-let status: boolean;
+
 
 @Component({
   selector: 'app-profile',
@@ -27,23 +27,26 @@ let status: boolean;
 
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
+  private profile: Profile;
+  private status: boolean;
 
-  status = true;
-  profile = {
-    id: '1',
-    name: 'Vlad',
-    surname: 'Sazonov',
-    age: 20,
-    phoneNumber: '89859711742',
-    email: 'sazvlad1@gmail.com',
-  };
-  private surname: string[];
 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
+    this.profile = {
+      id: '1',
+      name: 'Vlad',
+      surname: 'Sazonov',
+      age: 20,
+      phoneNumber: '8-985-971-17-42',
+      email: 'sazvlad1@gmail.com',
+    };
+    this.status = true;
+
+
   }
 
   initForm() {
