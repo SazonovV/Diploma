@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {Register} from 'ts-node';
+import {RegisterComponent} from '../register/register.component';
+import {LoginComponent} from '../login/login.component';
 
 
 @Component({
@@ -6,11 +10,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit() {
+  openDialog(): void {
+    this.dialog.open(RegisterComponent);
+  }
+  openLoginDialog(): void {
+    this.dialog.open(LoginComponent);
   }
 
 }

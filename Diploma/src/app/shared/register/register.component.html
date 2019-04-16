@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Регистрация</h1>
+
+<form [formGroup]="registerForm">
+  <div mat-dialog-content>
+    <mat-form-field class="fullwidth">
+      <input formControlName="firstName" matInput color="primary"  placeholder="Имя">
+    </mat-form-field>
+    <mat-form-field class="fullwidth">
+      <input formControlName="secondName" matInput placeholder="Фамилия" >
+    </mat-form-field>
+    <mat-form-field class="fullwidth">
+      <input formControlName="email" matInput placeholder="email" autocomplete="username">
+    </mat-form-field>
+    <mat-form-field class="fullwidth">
+      <input formControlName="password" matInput placeholder="Пароль" type="password" autocomplete="current-password">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="buttons">
+    <button [mat-dialog-close] [disabled]="!registerForm.valid" (click)="onSubmit(registerForm.value)" class="btn btn-submit">Готово</button>
+    <button [mat-dialog-close] class="btn btn-submit">Закрыть</button>
+  </div>
+</form>

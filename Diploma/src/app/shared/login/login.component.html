@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Вход</h1>
+
+<form [formGroup]="loginForm">
+  <div mat-dialog-content>
+    <mat-form-field class="fullwidth">
+      <input formControlName="email" matInput placeholder="Email" autocomplete="username">
+    </mat-form-field>
+    <mat-form-field class="fullwidth">
+      <input formControlName="password" matInput placeholder="Password" type="password" autocomplete="current-password">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="buttons">
+    <button [mat-dialog-close] [disabled]="!loginForm.valid" (click)="onSubmit(loginForm.value)" class="btn btn-submit">Войти</button>
+    <button [mat-dialog-close] class="btn btn-submit">Закрыть</button>
+  </div>
+</form>

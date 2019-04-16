@@ -24,44 +24,88 @@
   </div>
 
   <div class="flex info">
-    <div class="left_side mg_5vh exercises">
-      <table class="table">
-        <thead class="header_color">
-        <tr>
-          <th>Тренировки</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let practice of this.practices" (click)="exerciseFromTrain(practice)" class="practice">
-          <td>{{this.practice.name}}</td>
-          <!--Раскоментировать когда будет доделано в беке-->
-          <!--<td>{{this.practice.date | date}}</td>-->
-        </tr>
-        </tbody>
+    <div class="left_side mg_5vh exercises flex">
+      <table mat-table [dataSource]="practices">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="header_color header_color_border">Тренировки</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedPracticesColumns"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedPracticesColumns;"
+            (click)="exerciseFromTrain(row)"
+            [ngClass]="row.id === practiceActive.id ? 'practice_focus' : ''"
+            class="practice"></tr>
       </table>
+      <div class="buttons flex"><button type="button" class="btn btn-dark">Добавить тренировку</button></div>
+    </div>
+    <div class="right_side exercises mg_5vh">
+      <table mat-table [dataSource]="exercises">
+        <ng-container matColumnDef="No">
+          <th mat-header-cell *matHeaderCellDef class="header_color header_color_left header_color_num"> № </th>
+          <td mat-cell *matCellDef="let element;let i = index;"> {{ i + 1 }} </td>
+        </ng-container>
+        <ng-container matColumnDef="exercise">
+          <th mat-header-cell *matHeaderCellDef class="header_color header_color_exercise"> Упражнение </th>
+          <td mat-cell *matCellDef="let element;"> {{ element.name }} </td>
+        </ng-container>
+        <ng-container matColumnDef="try">
+          <th mat-header-cell *matHeaderCellDef class="header_color header_color_try"> Подходы </th>
+          <td mat-cell *matCellDef="let element;"> {{ element.num_try }} </td>
+        </ng-container>
+        <ng-container matColumnDef="rep">
+          <th mat-header-cell *matHeaderCellDef class="header_color header_color_right header_color_try"> Повторения </th>
+          <td mat-cell *matCellDef="let element;"> {{ element.num_rep }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedExercisesColumns"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedExercisesColumns;"></tr>
+      </table>
+    </div>
+    <!--<div class="left_side mg_5vh exercises">-->
+      <!--<table class="table">-->
+        <!--<thead class="header_color">-->
+        <!--<tr>-->
+          <!--<th>Тренировки</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let practice of this.practices" (click)="exerciseFromTrain(practice)" [ngClass]="practice.id === this.practiceActive.id ? 'practice_focus' : ''" class="practice">-->
+          <!--<td>-->
+            <!--<div class="practice_element flex">-->
+              <!--<span>{{this.practice.name}}</span>-->
+              <!--<div *ngIf="" class="practice_element_active"></div>-->
+            <!--</div>-->
+          <!--</td>-->
+          <!--&lt;!&ndash;TODO Раскоментировать когда будет доделано в беке&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>{{this.practice.date | date}}</td>&ndash;&gt;-->
+        <!--</tr>-->
+        <!--</tbody>-->
+      <!--</table>-->
 
-    </div>
-    <div class="right_side">
-      <div class="exercises mg_5vh">
-        <table *ngIf="true" class="table">
-          <thead class="header_color">
-          <tr>
-            <th scope="col">№</th>
-            <th scope="col">Упражнение</th>
-            <th scope="col">Подходы</th>
-            <th scope="col">Повторения</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let exercise of this.exercises; index as i">
-            <th scope="row">{{i+1}}</th>
-            <td>{{exercise.name}}</td>
-            <td>{{exercise.num_try}}</td>
-            <td>{{exercise.num_rep}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <!--</div>-->
+    <!--<div class="right_side">-->
+      <!--<div class="exercises mg_5vh">-->
+        <!--&lt;!&ndash;<div class="row header flex">{{this.practice.name}}</div>&ndash;&gt;-->
+        <!--<table class="table">-->
+          <!--<thead class="header_color">-->
+          <!--<tr>-->
+            <!--<th scope="col">№</th>-->
+            <!--<th scope="col">Упражнение</th>-->
+            <!--<th scope="col">Подходы</th>-->
+            <!--<th scope="col">Повторения</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody>-->
+          <!--<tr *ngFor="let exercise of this.exercises; index as i">-->
+            <!--<th scope="row">{{i+1}}</th>-->
+            <!--<td>{{exercise.name}}</td>-->
+            <!--<td>{{exercise.num_try}}</td>-->
+            <!--<td>{{exercise.num_rep}}</td>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </div>

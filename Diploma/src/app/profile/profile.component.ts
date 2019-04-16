@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {IProfile} from '../../assets/i-profile';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Profile } from '../Interface/profile';
 
@@ -26,16 +25,16 @@ import { Profile } from '../Interface/profile';
 
 
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup;
+  // profileForm: FormGroup;
   private profile: Profile;
   private status: boolean;
 
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit() {
-    this.initForm();
+    // this.initForm();
     this.profile = {
       id: '1',
       name: 'Vlad',
@@ -49,16 +48,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  initForm() {
-    this.profileForm = this.fb.group({
-      name: ['',
-      Validators.required],
-      // surname: [''],
-      // age: [20],
-      // phoneNumber: [''],
-      email: ['',
-      Validators.email]
-    });
-  }
+  // initForm() {
+  //   this.profileForm = this.fb.group({
+  //     name: ['',
+  //     Validators.required],
+  //     // surname: [''],
+  //     // age: [20],
+  //     // phoneNumber: [''],
+  //     email: ['',
+  //     Validators.email]
+  //   });
+  // }
 
 }

@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { PracticesComponent } from './practices.component';
 import {SharedModule} from '../shared/shared.module';
 import {PracticesRoutingModule} from './practices-routing.module';
+import {MatTableModule} from '@angular/material';
+import {AddNewPracticeComponent} from './add-new-practice/add-new-practice.component';
 
 @NgModule({
-  declarations: [PracticesComponent],
+  declarations: [PracticesComponent, AddNewPracticeComponent],
   imports: [
     CommonModule,
     SharedModule,
-    PracticesRoutingModule
+    PracticesRoutingModule,
+    MatTableModule
   ],
-  exports: [PracticesComponent]
+  exports: [PracticesComponent],
+  entryComponents: [ AddNewPracticeComponent ],
 })
 export class PracticesModule { }
